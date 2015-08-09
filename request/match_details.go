@@ -16,6 +16,7 @@ type GetMatchDetails struct {
 		Players []struct {
 			// account_id - the player's 32-bit Steam ID - will be set to
 			// "4294967295" if the account is private
+			// or "0" if the player is a bot
 			AccountID int `json:"account_id"`
 			// player_slot - an 8-bit unsigned int: if the left-most bit is set,
 			// the player was on dire. the two right-most bits represent the

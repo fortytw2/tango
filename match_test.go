@@ -1,8 +1,10 @@
 package tango
 
 import (
+	"log"
 	"os"
 	"testing"
+	"time"
 )
 
 // matches covers all matches we're making test cases for
@@ -31,10 +33,26 @@ func TestGetMatch(t *testing.T) {
 
 	api := NewWebAPI(os.Getenv("STEAM_API_KEY"))
 
+	// ensure there are no errors getting matches
 	for _, id := range matches {
-		m, err := api.GetMatch(id)
+		_, err := api.GetMatch(id)
 		if err != nil {
 			t.Errorf("error getting match %d, %s", id, err)
 		}
 	}
+}
+
+func TestGetPlayerMatches(t *testing.T) {
+	if os.Getenv("STEAM_API_KEY") == "" {
+		t.Fatal("no steam API key found, cannot test")
+	}
+
+	api := NewWebAPI(os.Getenv("STEAM_API_KEY"))
+
+	ids, err := api.GetPlayerMatchIDs(60746141, time.Date(2015, time.May, 10, 23, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Errorf("error getting match IDs for player %d, %s", 60746141, err)
+	}
+
+	log.Println(len(ids))
 }
