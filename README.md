@@ -1,4 +1,4 @@
-Tango
+Tango [![GoDoc](https://godoc.org/github.com/fortytw2/tango?status.svg)](http://godoc.org/github.com/fortytw2/tango)
 ------
 
 Complete wrapper for Valve's DOTA 2 Web API exposed cleanly to Go.
