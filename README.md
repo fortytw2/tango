@@ -22,7 +22,7 @@ import (
 var matchID = 271145478
 
 func main() {
-	api := tango.NewWebAPI("CBFD712A520425AD374B417B6C6D73C8")
+	api := tango.NewWebAPI("API KEY")
 
 	m, err := api.GetMatch(matchID)
 	if err != nil {
