@@ -28,6 +28,7 @@ func (wa *WebAPI) GetMatch(id int) (*dota.Match, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer resp.Body.Close()
 
 	data, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
@@ -64,6 +65,7 @@ func (wa *WebAPI) GetPlayerMatchIDs(playerID int, since time.Time) ([]int, error
 	if err != nil {
 		return nil, err
 	}
+	defer resp.Body.Close()
 
 	data, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
@@ -95,6 +97,7 @@ func (wa *WebAPI) GetPlayerMatchIDs(playerID int, since time.Time) ([]int, error
 		if err != nil {
 			return nil, err
 		}
+		defer resp.Body.Close()
 
 		data, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
